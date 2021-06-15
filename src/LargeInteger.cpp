@@ -90,8 +90,21 @@ LargeInteger::LargeInteger(int value)
  * @param digit An array of integers representing digits of a
  *   large integer to be constructed.
  */
-// Your implementation of the constructor from an array of int digits
-// should go here
+LargeInteger::LargeInteger(int numDigits, int digit[])
+{
+  // set this instance id
+  id = nextLargeIntegerId++;
+
+  // allocate an array to copy the digits into
+  this->numDigits = numDigits;
+  this->digit = new int[numDigits];
+
+  // copy digits to this array of digits
+  for (int position = 0; position < numDigits; position++)
+  {
+    this->digit[position] = digit[position];
+  }
+}
 
 /** @brief LargeInteger destructor
  *

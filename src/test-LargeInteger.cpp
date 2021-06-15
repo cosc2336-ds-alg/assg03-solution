@@ -44,24 +44,18 @@ TEST_CASE("<tostring()> member function tests using default and standard constru
  * Uncomment the following test case block and write your code to pass
  * the tests.
  */
-/* uncomment this test case when ready to implement and test the
- * array constructor you are to create
-   TEST_CASE("<array constructor> constructor function tests",
-             "[task2]")
-   {
-   // a kind of large integer
-   int digits1[] = {8, 4, 6, 3, 8, 4, 7, 4, 1, 2};
-   LargeInteger li1(10, digits1);
-   CHECK( li1.tostring() == "2147483648" );
+TEST_CASE("<array constructor> constructor function tests", "[task2]")
+{
+  // a kind of large integer
+  int digits1[] = {8, 4, 6, 3, 8, 4, 7, 4, 1, 2};
+  LargeInteger li1(10, digits1);
+  CHECK(li1.tostring() == "2147483648");
 
-   // a really large integer
-   int digits2[] = {2, 4, 7, 3, 6, 5, 4, 3, 5, 9,
-                  2, 7, 3, 8, 4, 9, 6, 2, 1, 0,
-                  7, 6, 1, 9, 3, 4, 2, 0, 2, 8};
-   LargeInteger li2(30, digits2);
-   CHECK( li2.tostring() == "820243916701269483729534563742" );
-   }
- */
+  // a really large integer
+  int digits2[] = {2, 4, 7, 3, 6, 5, 4, 3, 5, 9, 2, 7, 3, 8, 4, 9, 6, 2, 1, 0, 7, 6, 1, 9, 3, 4, 2, 0, 2, 8};
+  LargeInteger li2(30, digits2);
+  CHECK(li2.tostring() == "820243916701269483729534563742");
+}
 
 /** Test fixture of some LargeInteger instances to be used in the following
  * tests.  Define a diverse set of large integer instances that we can

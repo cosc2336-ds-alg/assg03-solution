@@ -37,9 +37,9 @@ class LargeInteger
 {
 public:
   // class constructors and destructors
-  LargeInteger();          // default constructor
-  LargeInteger(int value); // standard constructor
-  // your constructor from an array prototype should go here
+  LargeInteger();                           // default constructor
+  LargeInteger(int value);                  // standard constructor
+  LargeInteger(int numDigits, int digit[]); // construct from array of digits
   ~LargeInteger();
 
   // class accessor methods
