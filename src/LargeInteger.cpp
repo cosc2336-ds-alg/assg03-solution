@@ -184,7 +184,19 @@ int LargeInteger::maxDigits(const LargeInteger& other) const
  * @returns int The digit in the 10^position place of this
  *   LargeInteger object.
  */
-// your implementation of the digitAtPosition() member function should go here
+int LargeInteger::digitAtPosition(int position) const
+{
+  // if digit position is greater than our numDigits, then we have
+  // 0 at that position
+  if ((position >= numDigits) || (position < 0))
+  {
+    return 0;
+  }
+  else // return the indicated place/index
+  {
+    return digit[position];
+  }
+}
 
 /** @brief Append digit
  *

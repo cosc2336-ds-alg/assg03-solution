@@ -122,46 +122,42 @@ TEST_CASE_METHOD(LargeIntegerTestFixture, "<maxDigits()> member function tests",
  * Uncomment the following test case block and write your code to pass
  * the tests.
  */
-/* uncomment this test case to work on implementation of digitAtPosition()
- * member function
-   TEST_CASE_METHOD(LargeIntegerTestFixture,
-     "<digitAtPosition()> member function tests (reading values)", "[task4]")
-   {
-   SECTION("test of digitAtPosition() member function")
-   {
+TEST_CASE_METHOD(LargeIntegerTestFixture, "<digitAtPosition()> member function tests (reading values)", "[task4]")
+{
+  SECTION("test of digitAtPosition() member function")
+  {
     // test single digit access working
-    CHECK( li1.digitAtPosition(0) == 0 );
-    CHECK( li2.digitAtPosition(0) == 5 );
+    CHECK(li1.digitAtPosition(0) == 0);
+    CHECK(li2.digitAtPosition(0) == 5);
 
     // check begin and end bounds
-    CHECK( li3.digitAtPosition(0) == 7 );
-    CHECK( li3.digitAtPosition(4) == 3 );
-    CHECK( li5.digitAtPosition(0) == 2 );
-    CHECK( li5.digitAtPosition(8) == 3 );
-    CHECK( li6.digitAtPosition(0) == 3 );
-    CHECK( li6.digitAtPosition(16) == 6 );
+    CHECK(li3.digitAtPosition(0) == 7);
+    CHECK(li3.digitAtPosition(4) == 3);
+    CHECK(li5.digitAtPosition(0) == 2);
+    CHECK(li5.digitAtPosition(8) == 3);
+    CHECK(li6.digitAtPosition(0) == 3);
+    CHECK(li6.digitAtPosition(16) == 6);
 
     // check some aribitrary values not at ends
-    CHECK( li3.digitAtPosition(2) == 5 );
-    CHECK( li4.digitAtPosition(1) == 8 );
-    CHECK( li5.digitAtPosition(6) == 8 );
-    CHECK( li5.digitAtPosition(2) == 3 );
-    CHECK( li6.digitAtPosition(4) == 2 );
-    CHECK( li6.digitAtPosition(14) == 9 );
+    CHECK(li3.digitAtPosition(2) == 5);
+    CHECK(li4.digitAtPosition(1) == 8);
+    CHECK(li5.digitAtPosition(6) == 8);
+    CHECK(li5.digitAtPosition(2) == 3);
+    CHECK(li6.digitAtPosition(4) == 2);
+    CHECK(li6.digitAtPosition(14) == 9);
 
     // according to specifications, illegal indexes should give a 0 as the digit at place
-    CHECK( li1.digitAtPosition(-1) == 0 );
-    CHECK( li2.digitAtPosition(-5) == 0 );
-    CHECK( li4.digitAtPosition(-7) == 0 );
-    CHECK( li1.digitAtPosition(1) == 0 );
-    CHECK( li2.digitAtPosition(5) == 0 );
-    CHECK( li3.digitAtPosition(6) == 0 );
-    CHECK( li4.digitAtPosition(6) == 0 );
-    CHECK( li5.digitAtPosition(15) == 0 );
-    CHECK( li6.digitAtPosition(17) == 0 );
-   }
-   }
- */
+    CHECK(li1.digitAtPosition(-1) == 0);
+    CHECK(li2.digitAtPosition(-5) == 0);
+    CHECK(li4.digitAtPosition(-7) == 0);
+    CHECK(li1.digitAtPosition(1) == 0);
+    CHECK(li2.digitAtPosition(5) == 0);
+    CHECK(li3.digitAtPosition(6) == 0);
+    CHECK(li4.digitAtPosition(6) == 0);
+    CHECK(li5.digitAtPosition(15) == 0);
+    CHECK(li6.digitAtPosition(17) == 0);
+  }
+}
 
 /** Task 5: test appendDigit() member function
  * Uncomment the following test case block and write your code to pass
