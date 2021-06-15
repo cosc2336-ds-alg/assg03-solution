@@ -27,22 +27,18 @@ using namespace std;
  * will use extensively in the tests to test your other member
  * functions.
  */
-/* uncomment the tests cases 1 at a time.  This test case tests implementation
- * of the tostring() member function which we use for further testing.
-   TEST_CASE("<tostring()> member function tests using default and standard constructor",
-             "[task1]")
-   {
-   LargeInteger li1;
-   CHECK( li1.tostring() == "0" );
+TEST_CASE("<tostring()> member function tests using default and standard constructor", "[task1]")
+{
+  LargeInteger li1;
+  CHECK(li1.tostring() == "0");
 
-   LargeInteger li2(12345);
-   CHECK( li2.tostring() == "12345" );
+  LargeInteger li2(12345);
+  CHECK(li2.tostring() == "12345");
 
-   // an even larger value
-   LargeInteger li3(1234567890);
-   CHECK( li3.tostring() == "1234567890" );
-   }
- */
+  // an even larger value
+  LargeInteger li3(1234567890);
+  CHECK(li3.tostring() == "1234567890");
+}
 
 /** Task 2: test array based constructor implementation
  * Uncomment the following test case block and write your code to pass

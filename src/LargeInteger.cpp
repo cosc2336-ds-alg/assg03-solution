@@ -115,7 +115,20 @@ LargeInteger::~LargeInteger()
  *
  * @returns string The large integer as a string
  */
-// your implementation of the tostring() member function should go here
+string LargeInteger::tostring() const
+{
+  ostringstream out;
+
+  // most significant digit is in highest position, so go
+  // backwards through our array of digits
+  for (int position = numDigits - 1; position >= 0; position--)
+  {
+    out << digit[position];
+  }
+
+  // convert the ostringstream to a regular string to return it
+  return out.str();
+}
 
 /** @brief Maximum number of digits
  *

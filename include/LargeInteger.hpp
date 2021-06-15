@@ -42,7 +42,8 @@ public:
   // your constructor from an array prototype should go here
   ~LargeInteger();
 
-  // your member function declarations/prototypes should go here
+  // class accessor methods
+  string tostring() const;
 
 private:
   /// @brief id private member integer variable, this is not strictly needed
