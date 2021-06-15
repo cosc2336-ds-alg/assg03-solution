@@ -47,6 +47,9 @@ public:
   int maxDigits(const LargeInteger& other) const;
   int digitAtPosition(int position) const;
 
+  // class operators
+  void appendDigit(int digit);
+
 private:
   /// @brief id private member integer variable, this is not strictly needed
   ///   for this class, but we assign a unique id to each instance of

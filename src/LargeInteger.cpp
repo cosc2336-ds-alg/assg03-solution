@@ -209,7 +209,34 @@ int LargeInteger::digitAtPosition(int position) const
  * @param digit The digit to append to the most significant place
  *   of this object.
  */
-// your implementation of the appendDigit() member function should go here
+void LargeInteger::appendDigit(int digit)
+{
+  // ignore request to append a 0 to most significant place
+  if (digit == 0)
+  {
+    return;
+  }
+
+  // allocate a new array
+  int numNewDigits = numDigits + 1;
+  int* newDigit = new int[numNewDigits];
+
+  // copy the current digits into new
+  // NOTE: we only copy up to the size of the old array, up to numDigits
+  for (int position = 0; position < numDigits; position++)
+  {
+    newDigit[position] = this->digit[position];
+  }
+
+  // append/add the new most significat digit to most significnat place
+  newDigit[numDigits] = digit;
+
+  // do memory management, free up the unused digits, and start using
+  // the newly allocated space as our actual digits
+  delete[] this->digit;
+  this->digit = newDigit; // they both now point to the new allocated space
+  numDigits = numNewDigits;
+}
 
 /** @brief Add large integers
  *

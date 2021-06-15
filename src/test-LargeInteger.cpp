@@ -163,34 +163,30 @@ TEST_CASE_METHOD(LargeIntegerTestFixture, "<digitAtPosition()> member function t
  * Uncomment the following test case block and write your code to pass
  * the tests.
  */
-/* uncomment this test case to work on implementation of appendDigit()
- * member function
-   TEST_CASE_METHOD(LargeIntegerTestFixture,
-     "<appendDigit()> member function tests", "[task5]")
-   {
-   SECTION("test of appendDigit() member function")
-   {
+TEST_CASE_METHOD(LargeIntegerTestFixture, "<appendDigit()> member function tests", "[task5]")
+{
+  SECTION("test of appendDigit() member function")
+  {
     li2.appendDigit(7);
-    CHECK( li2.tostring() == "75" );
+    CHECK(li2.tostring() == "75");
     li3.appendDigit(9);
-    CHECK( li3.tostring() == "934567" );
+    CHECK(li3.tostring() == "934567");
     li5.appendDigit(1);
-    CHECK( li5.tostring() == "1398298312" );
+    CHECK(li5.tostring() == "1398298312");
     li6.appendDigit(7);
-    CHECK( li6.tostring() == "765939674215124133" );
+    CHECK(li6.tostring() == "765939674215124133");
 
     // append of 0 (as most significant digit) should be ignored
     li1.appendDigit(0);
-    CHECK( li1.tostring() == "0" );
+    CHECK(li1.tostring() == "0");
     li4.appendDigit(0);
-    CHECK( li4.tostring() == "56789" );
+    CHECK(li4.tostring() == "56789");
     li5.appendDigit(0);
-    CHECK( li5.tostring() == "1398298312" );
+    CHECK(li5.tostring() == "1398298312");
     li6.appendDigit(0);
-    CHECK( li6.tostring() == "765939674215124133" );
-   }
-   }
- */
+    CHECK(li6.tostring() == "765939674215124133");
+  }
+}
 
 /** Task 6: test add() member function
  * Uncomment the following test case block and write your code to pass
