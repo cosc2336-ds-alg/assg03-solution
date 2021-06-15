@@ -188,7 +188,7 @@ int LargeInteger::digitAtPosition(int position) const
 {
   // if digit position is greater than our numDigits, then we have
   // 0 at that position
-  if ((position >= numDigits) || (position < 0))
+  if ((position >= numDigits) or (position < 0))
   {
     return 0;
   }
