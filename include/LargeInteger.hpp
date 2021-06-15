@@ -44,6 +44,7 @@ public:
 
   // class accessor methods
   string tostring() const;
+  int maxDigits(const LargeInteger& other) const;
 
 private:
   /// @brief id private member integer variable, this is not strictly needed

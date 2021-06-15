@@ -62,67 +62,61 @@ TEST_CASE("<array constructor> constructor function tests", "[task2]")
  * reuse in all of the following test cases.  Uncomment these for
  * Task 3 and subsequent tests.
  */
-/* uncomment this fixture before performing the following test cases
-   struct LargeIntegerTestFixture
-   {
-   public:
-   /// @brief Large Integer 1, 1 digits, 0 initially, uses default constructor
-   LargeInteger li1;
+struct LargeIntegerTestFixture
+{
+public:
+  /// @brief Large Integer 1, 1 digits, 0 initially, uses default constructor
+  LargeInteger li1;
 
-   /// @brief Large Integer 2, 1 digit, non-zero initially, usest int parsing constructor
-   LargeInteger li2 = LargeInteger(5);
+  /// @brief Large Integer 2, 1 digit, non-zero initially, usest int parsing constructor
+  LargeInteger li2 = LargeInteger(5);
 
-   /// @brief Large Integer 3, 5 digits, non-zero
-   LargeInteger li3 = LargeInteger(34567);
+  /// @brief Large Integer 3, 5 digits, non-zero
+  LargeInteger li3 = LargeInteger(34567);
 
-   /// @brief Large Integer 4, 5 digits, using task 2 array based constructor
-   ///        Notice that the value of this is 56789
-   int digits4[5] = {9, 8, 7, 6, 5};
-   LargeInteger li4 = LargeInteger(5, digits4);
+  /// @brief Large Integer 4, 5 digits, using task 2 array based constructor
+  ///        Notice that the value of this is 56789
+  int digits4[5] = {9, 8, 7, 6, 5};
+  LargeInteger li4 = LargeInteger(5, digits4);
 
-   /// @brief Large Integer 5, 9 digits
-   LargeInteger li5 = LargeInteger(398298312);
+  /// @brief Large Integer 5, 9 digits
+  LargeInteger li5 = LargeInteger(398298312);
 
-   /// @brief Large Integer 6, 17 digits, uses task 2 array based constructor
-   int digits6[17] = {3, 3, 1, 4, 2, 1, 5, 1, 2, 4, 7, 6, 9, 3, 9, 5, 6};
-   LargeInteger li6 = LargeInteger(17, digits6);
-   };
- */
+  /// @brief Large Integer 6, 17 digits, uses task 2 array based constructor
+  int digits6[17] = {3, 3, 1, 4, 2, 1, 5, 1, 2, 4, 7, 6, 9, 3, 9, 5, 6};
+  LargeInteger li6 = LargeInteger(17, digits6);
+};
 
 /** Task 3: test maxDigits() member function
  * Uncomment the following test case block and write your code to pass
  * the tests.
  */
-/* uncomment this test case to work on implementation of maxDigits()
- * member function
-   TEST_CASE_METHOD(LargeIntegerTestFixture,
-     "<maxDigits()> member function tests", "[task3]")
-   {
-   SECTION("test of maxDigits() member function")
-   {
+TEST_CASE_METHOD(LargeIntegerTestFixture, "<maxDigits()> member function tests", "[task3]")
+{
+  SECTION("test of maxDigits() member function")
+  {
     // when max digits are equal
-    CHECK( li1.maxDigits(li2) == 1 );
-    CHECK( li2.maxDigits(li1) == 1 );
+    CHECK(li1.maxDigits(li2) == 1);
+    CHECK(li2.maxDigits(li1) == 1);
 
-    CHECK( li3.maxDigits(li4) == 5 );
-    CHECK( li4.maxDigits(li3) == 5 );
+    CHECK(li3.maxDigits(li4) == 5);
+    CHECK(li4.maxDigits(li3) == 5);
 
     // not equal
-    CHECK( li1.maxDigits(li3) == 5 );
-    CHECK( li4.maxDigits(li2) == 5 );
+    CHECK(li1.maxDigits(li3) == 5);
+    CHECK(li4.maxDigits(li2) == 5);
 
     // some more checks
-    CHECK( li5.maxDigits(li6) == 17 );
-    CHECK( li6.maxDigits(li5) == 17 );
+    CHECK(li5.maxDigits(li6) == 17);
+    CHECK(li6.maxDigits(li5) == 17);
 
-    CHECK( li5.maxDigits(li3) == 9 );
-    CHECK( li3.maxDigits(li6) == 17 );
+    CHECK(li5.maxDigits(li3) == 9);
+    CHECK(li3.maxDigits(li6) == 17);
 
-    CHECK( li5.maxDigits(li2) == 9 );
-    CHECK( li1.maxDigits(li6) == 17 );
-   }
-   }
- */
+    CHECK(li5.maxDigits(li2) == 9);
+    CHECK(li1.maxDigits(li6) == 17);
+  }
+}
 
 /** Task 4: test digitAtPosition() member function
  * Uncomment the following test case block and write your code to pass

@@ -159,7 +159,11 @@ string LargeInteger::tostring() const
  * @returns int The larger (max) of the numDigits of the two
  *   referenced objects.
  */
-// your implementation of the maxDigits() member function should go here
+int LargeInteger::maxDigits(const LargeInteger& other) const
+{
+  // max comes from STL algorithms
+  return max(this->numDigits, other.numDigits);
+}
 
 /** @brief Digit at position
  *
