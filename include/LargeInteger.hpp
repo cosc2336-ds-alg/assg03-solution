@@ -37,12 +37,19 @@ class LargeInteger
 {
 public:
   // class constructors and destructors
-  LargeInteger();          // default constructor
-  LargeInteger(int value); // standard constructor
-  // your constructor from an array prototype should go here
+  LargeInteger();                           // default constructor
+  LargeInteger(int value);                  // standard constructor
+  LargeInteger(int numDigits, int digit[]); // construct from array of digits
   ~LargeInteger();
 
-  // your member function declarations/prototypes should go here
+  // class accessor methods
+  string tostring() const;
+  int maxDigits(const LargeInteger& other) const;
+  int digitAtPosition(int position) const;
+
+  // class operators
+  void appendDigit(int digit);
+  LargeInteger& add(const LargeInteger& other) const;
 
 private:
   /// @brief id private member integer variable, this is not strictly needed

@@ -90,8 +90,21 @@ LargeInteger::LargeInteger(int value)
  * @param digit An array of integers representing digits of a
  *   large integer to be constructed.
  */
-// Your implementation of the constructor from an array of int digits
-// should go here
+LargeInteger::LargeInteger(int numDigits, int digit[])
+{
+  // set this instance id
+  id = nextLargeIntegerId++;
+
+  // allocate an array to copy the digits into
+  this->numDigits = numDigits;
+  this->digit = new int[numDigits];
+
+  // copy digits to this array of digits
+  for (int position = 0; position < numDigits; position++)
+  {
+    this->digit[position] = digit[position];
+  }
+}
 
 /** @brief LargeInteger destructor
  *
@@ -115,7 +128,20 @@ LargeInteger::~LargeInteger()
  *
  * @returns string The large integer as a string
  */
-// your implementation of the tostring() member function should go here
+string LargeInteger::tostring() const
+{
+  ostringstream out;
+
+  // most significant digit is in highest position, so go
+  // backwards through our array of digits
+  for (int position = numDigits - 1; position >= 0; position--)
+  {
+    out << digit[position];
+  }
+
+  // convert the ostringstream to a regular string to return it
+  return out.str();
+}
 
 /** @brief Maximum number of digits
  *
@@ -133,7 +159,11 @@ LargeInteger::~LargeInteger()
  * @returns int The larger (max) of the numDigits of the two
  *   referenced objects.
  */
-// your implementation of the maxDigits() member function should go here
+int LargeInteger::maxDigits(const LargeInteger& other) const
+{
+  // max comes from STL algorithms
+  return max(this->numDigits, other.numDigits);
+}
 
 /** @brief Digit at position
  *
@@ -154,7 +184,19 @@ LargeInteger::~LargeInteger()
  * @returns int The digit in the 10^position place of this
  *   LargeInteger object.
  */
-// your implementation of the digitAtPosition() member function should go here
+int LargeInteger::digitAtPosition(int position) const
+{
+  // if digit position is greater than our numDigits, then we have
+  // 0 at that position
+  if ((position >= numDigits) or (position < 0))
+  {
+    return 0;
+  }
+  else // return the indicated place/index
+  {
+    return digit[position];
+  }
+}
 
 /** @brief Append digit
  *
@@ -167,7 +209,34 @@ LargeInteger::~LargeInteger()
  * @param digit The digit to append to the most significant place
  *   of this object.
  */
-// your implementation of the appendDigit() member function should go here
+void LargeInteger::appendDigit(int digit)
+{
+  // ignore request to append a 0 to most significant place
+  if (digit == 0)
+  {
+    return;
+  }
+
+  // allocate a new array
+  int numNewDigits = numDigits + 1;
+  int* newDigit = new int[numNewDigits];
+
+  // copy the current digits into new
+  // NOTE: we only copy up to the size of the old array, up to numDigits
+  for (int position = 0; position < numDigits; position++)
+  {
+    newDigit[position] = this->digit[position];
+  }
+
+  // append/add the new most significat digit to most significnat place
+  newDigit[numDigits] = digit;
+
+  // do memory management, free up the unused digits, and start using
+  // the newly allocated space as our actual digits
+  delete[] this->digit;
+  this->digit = newDigit; // they both now point to the new allocated space
+  numDigits = numNewDigits;
+}
 
 /** @brief Add large integers
  *
@@ -180,4 +249,39 @@ LargeInteger::~LargeInteger()
  *   LargeInteger which contains the value of the this added
  *   with other.
  */
-// your implementation of the add() member function should go here
+LargeInteger& LargeInteger::add(const LargeInteger& other) const
+{
+  // how big will result need to be?
+  int numNewDigits = maxDigits(other);
+
+  // allocate enough memory to hold result
+  int* newDigits = new int[numNewDigits];
+
+  // perform the addition, from least significant to most significant
+  // digit, carrying if necessary
+  int newDigit;
+  int carry = 0;
+  for (int position = 0; position < numNewDigits; position++)
+  {
+    newDigit = this->digitAtPosition(position) + other.digitAtPosition(position) + carry;
+
+    // extract the digit and the value to carry
+    carry = newDigit / 10;    // result of integer division, so if result is 15 then 15 / 10 = 1
+    newDigit = newDigit % 10; // remainder is value from 0-9, so if result is 15 then 15 % 10 == 5
+
+    // put new digit into the array of digits at the correct
+    // index
+    newDigits[position] = newDigit;
+  }
+
+  // now make the resulting new LargeInteger, and manage our memory
+  LargeInteger* res = new LargeInteger(numNewDigits, newDigits);
+  delete[] newDigits; // the new LargeInteger allocated its own space, so we can free ours now
+
+  // One last task, if there was a carry from addition of the final
+  // most significant digit, we need to grow the new LargeInteger and
+  // append the carry result
+  res->appendDigit(carry);
+
+  return *res;
+}
