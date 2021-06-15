@@ -192,12 +192,10 @@ TEST_CASE_METHOD(LargeIntegerTestFixture, "<appendDigit()> member function tests
  * Uncomment the following test case block and write your code to pass
  * the tests.
  */
-/* uncomment this test case to work on implementation of add() member function
-   TEST_CASE_METHOD(LargeIntegerTestFixture,
-     "<add()> member function tests", "[task6]")
-   {
-   SECTION("")
-   {
+TEST_CASE_METHOD(LargeIntegerTestFixture, "<add()> member function tests", "[task6]")
+{
+  SECTION("")
+  {
     // append the digits from previous test case again
     li2.appendDigit(7);
     li3.appendDigit(9);
@@ -208,22 +206,22 @@ TEST_CASE_METHOD(LargeIntegerTestFixture, "<appendDigit()> member function tests
     LargeInteger lires;
 
     lires = li1.add(li2);
-    CHECK( lires.tostring() == "75" );
+    CHECK(lires.tostring() == "75");
 
     lires = li2.add(li1);
-    CHECK( lires.tostring() == "75" );
+    CHECK(lires.tostring() == "75");
 
     lires = li3.add(li4);
-    CHECK( lires.tostring() == "991356" );
+    CHECK(lires.tostring() == "991356");
 
     lires = li4.add(li3);
-    CHECK( lires.tostring() == "991356" );
+    CHECK(lires.tostring() == "991356");
 
     lires = li5.add(li6);
-    CHECK( lires.tostring() == "765939675613422445" );
+    CHECK(lires.tostring() == "765939675613422445");
 
     lires = li6.add(li5);
-    CHECK( lires.tostring() == "765939675613422445" );
+    CHECK(lires.tostring() == "765939675613422445");
 
     // an explicit test of carry on last digit
     LargeInteger li7(999999999);
@@ -231,10 +229,9 @@ TEST_CASE_METHOD(LargeIntegerTestFixture, "<appendDigit()> member function tests
     LargeInteger li8(9, digits8);
 
     lires = li7.add(li8);
-    CHECK( lires.tostring() == "1999999998" );
+    CHECK(lires.tostring() == "1999999998");
 
     lires = li8.add(li7);
-    CHECK( lires.tostring() == "1999999998" );
-   }
-   }
- */
+    CHECK(lires.tostring() == "1999999998");
+  }
+}

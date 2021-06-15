@@ -49,6 +49,7 @@ public:
 
   // class operators
   void appendDigit(int digit);
+  LargeInteger& add(const LargeInteger& other) const;
 
 private:
   /// @brief id private member integer variable, this is not strictly needed

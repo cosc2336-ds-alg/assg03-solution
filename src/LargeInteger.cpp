@@ -249,4 +249,39 @@ void LargeInteger::appendDigit(int digit)
  *   LargeInteger which contains the value of the this added
  *   with other.
  */
-// your implementation of the add() member function should go here
+LargeInteger& LargeInteger::add(const LargeInteger& other) const
+{
+  // how big will result need to be?
+  int numNewDigits = maxDigits(other);
+
+  // allocate enough memory to hold result
+  int* newDigits = new int[numNewDigits];
+
+  // perform the addition, from least significant to most significant
+  // digit, carrying if necessary
+  int newDigit;
+  int carry = 0;
+  for (int position = 0; position < numNewDigits; position++)
+  {
+    newDigit = this->digitAtPosition(position) + other.digitAtPosition(position) + carry;
+
+    // extract the digit and the value to carry
+    carry = newDigit / 10;    // result of integer division, so if result is 15 then 15 / 10 = 1
+    newDigit = newDigit % 10; // remainder is value from 0-9, so if result is 15 then 15 % 10 == 5
+
+    // put new digit into the array of digits at the correct
+    // index
+    newDigits[position] = newDigit;
+  }
+
+  // now make the resulting new LargeInteger, and manage our memory
+  LargeInteger* res = new LargeInteger(numNewDigits, newDigits);
+  delete[] newDigits; // the new LargeInteger allocated its own space, so we can free ours now
+
+  // One last task, if there was a carry from addition of the final
+  // most significant digit, we need to grow the new LargeInteger and
+  // append the carry result
+  res->appendDigit(carry);
+
+  return *res;
+}
